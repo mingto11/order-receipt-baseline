@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Order {
 
-    String nm;
-    String addr;
     Customer customer;
     List<LineItem> li;
 
@@ -30,18 +28,11 @@ public class Order {
     StringBuilder receipt = new StringBuilder();
 
     public String receipt() {
-
-
         printHeader();
-
         printCustomerInfo();
-
         printLineItems();
-
         printStateTax();
-
         printTotalAmount();
-
         return receipt.toString();
     }
 
