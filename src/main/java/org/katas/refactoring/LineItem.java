@@ -38,7 +38,6 @@ public class LineItem {
 		output.append('\t');
 		output.append(totalAmount());
 		output.append('\n');
-		output.append("sdaf");
 		return output;
 	}
 }
