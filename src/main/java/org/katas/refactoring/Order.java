@@ -5,11 +5,11 @@ import java.util.List;
 public class Order {
 
     Customer customer;
-    List<LineItem> li;
+    List<LineItem> lineItems;
 
-    public Order(Customer customer,List<LineItem> li) {
+    public Order(Customer customer,List<LineItem> lineItems) {
         this.customer = customer;
-        this.li = li;
+        this.lineItems = lineItems;
     }
 
     public Customer getCustomer() {
@@ -17,7 +17,7 @@ public class Order {
     }
 
     public List<LineItem> getLineItems() {
-        return li;
+        return lineItems;
     }
     StringBuilder receipt = new StringBuilder();
 
