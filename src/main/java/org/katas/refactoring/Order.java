@@ -27,7 +27,6 @@ public class Order {
         printLineItems();
         printStateTax();
         printTotalAmount();
-        System.out.println(receipt.toString());
         return receipt.toString();
     }
 
