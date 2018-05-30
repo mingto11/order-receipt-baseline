@@ -12,13 +12,6 @@ public class Order {
         this.lineItems = lineItems;
     }
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public List<LineItem> getLineItems() {
-        return lineItems;
-    }
     StringBuilder receipt = new StringBuilder();
 
     public String receipt() {
@@ -35,15 +28,15 @@ public class Order {
     }
 
     private void printCustomerInfo() {
-        if (this.getCustomer() != null) {
-            receipt.append(this.getCustomer().getName());
-            receipt.append(this.getCustomer().getAddress());
+        if (this.customer != null) {
+            receipt.append(this.customer.getName());
+            receipt.append(this.customer.getAddress());
             receipt.append("\n");
         }
     }
 
     private void printLineItems() {
-        for (LineItem lineItem : this.getLineItems()) {
+        for (LineItem lineItem : this.lineItems) {
             receipt.append(lineItem.returnLineInfo());
         }
 
@@ -55,7 +48,7 @@ public class Order {
 
     private void printStateTax() {
         double totSalesTx = 0d;
-        for (LineItem lineItem : this.getLineItems()) {
+        for (LineItem lineItem : this.lineItems) {
             totSalesTx += caculateSalesTax(lineItem);
         }
         receipt.append("Sales Tax").append('\t').append(totSalesTx);
@@ -63,7 +56,7 @@ public class Order {
 
     private void printTotalAmount() {
         double totalAmout = 0d;
-        for (LineItem lineItem : this.getLineItems()) {
+        for (LineItem lineItem : this.lineItems) {
             totalAmout += lineItem.totalAmount() + caculateSalesTax(lineItem);
         }
         receipt.append("Total Amount").append('\t').append(totalAmout);

@@ -29,15 +29,15 @@ public class LineItem {
     }
 
     public StringBuilder returnLineInfo() {
-		StringBuilder output = new StringBuilder();
-		output.append(getDescription());
-		output.append('\t');
-		output.append(getPrice());
-		output.append('\t');
-		output.append(getQuantity());
-		output.append('\t');
-		output.append(totalAmount());
-		output.append('\n');
-		return output;
+		StringBuilder lineInfo = new StringBuilder();
+		lineInfo.append(getDescription());
+		lineInfo.append('\t');
+		lineInfo.append(getPrice());
+		lineInfo.append('\t');
+		lineInfo.append(getQuantity());
+		lineInfo.append('\t');
+		lineInfo.append(totalAmount());
+		lineInfo.append('\n');
+		return lineInfo;
 	}
 }
