@@ -14,9 +14,8 @@ public class OrderReceiptTest {
         customer.setName("Mr X");
         customer.setAddress("Chicago, 60601");
         Order order = new Order(customer, new ArrayList<LineItem>());
-        OrderReceiptNew receipt = new OrderReceiptNew(order);
 
-        String output = receipt.printReceipt();
+        String output = order.receipt();
 
         assertThat(output, containsString("Mr X"));
         assertThat(output, containsString("Chicago, 60601"));
@@ -29,9 +28,10 @@ public class OrderReceiptTest {
             add(new LineItem("biscuits", 5.0, 5));
             add(new LineItem("chocolate", 20.0, 1));
         }};
-        OrderReceiptNew receipt = new OrderReceiptNew(new Order(null, lineItems));
+        Order order = new Order(null, lineItems);
 
-        String output = receipt.printReceipt();
+
+        String output = order.receipt();
 
         assertThat(output, containsString("milk\t10.0\t2\t20.0\n"));
         assertThat(output, containsString("biscuits\t5.0\t5\t25.0\n"));
