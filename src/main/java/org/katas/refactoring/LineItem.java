@@ -27,4 +27,18 @@ public class LineItem {
     double totalAmount() {
         return p * qty;
     }
+
+    public StringBuilder returnLineInfo() {
+		StringBuilder output = new StringBuilder();
+		output.append(getDescription());
+		output.append('\t');
+		output.append(getPrice());
+		output.append('\t');
+		output.append(getQuantity());
+		output.append('\t');
+		output.append(totalAmount());
+		output.append('\n');
+		output.append("sdaf");
+		return output;
+	}
 }

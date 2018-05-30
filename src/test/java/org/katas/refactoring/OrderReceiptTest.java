@@ -10,8 +10,11 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 public class OrderReceiptTest {
     @Test
     public void shouldPrintCustomerInformationOnOrder() {
-        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
-        OrderReceipt receipt = new OrderReceipt(order);
+        Customer customer = new Customer();
+        customer.setName("Mr X");
+        customer.setAddress("Chicago, 60601");
+        Order order = new Order(customer, new ArrayList<LineItem>());
+        OrderReceiptNew receipt = new OrderReceiptNew(order);
 
         String output = receipt.printReceipt();
 
@@ -26,7 +29,7 @@ public class OrderReceiptTest {
             add(new LineItem("biscuits", 5.0, 5));
             add(new LineItem("chocolate", 20.0, 1));
         }};
-        OrderReceipt receipt = new OrderReceipt(new Order(null, null, lineItems));
+        OrderReceiptNew receipt = new OrderReceiptNew(new Order(null, lineItems));
 
         String output = receipt.printReceipt();
 
