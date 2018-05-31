@@ -1,13 +1,12 @@
 package org.katas.refactoring;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     Customer customer;
     List<LineItem> items;
 
-    public Order(Customer customer, ArrayList<LineItem> lineItems) {
+    public Order(Customer customer, List<LineItem> lineItems) {
         this.customer = customer;
         this.items = lineItems;
     }
@@ -20,17 +19,26 @@ public class Order {
         return customer.getAddress();
     }
 
-    public double getTotalAmount(){
-        double totalAmount = items.stream().mapToDouble(LineItem::getTotalAmount).sum();
-        return totalAmount + getTotalSalesTax();
+    public double getTotalAmountIncludeTax() {
+        return getTotalAmount() + getTotalSalesTax();
     }
 
-    public double getTotalSalesTax(){
-        double totSalesTx = items.stream().mapToDouble(LineItem::getTotalAmount).sum();
-        return totSalesTx *.10;
+    public double getTotalAmount(){
+        return items.stream().mapToDouble(LineItem::getTotalAmount).sum();
+    }
+
+    public double getTotalSalesTax() {
+        return getTotalAmount() * .10;
     }
 
     public List<LineItem> getLineItems() {
         return items;
+    }
+
+    public String getCustomerInformation(){
+        StringBuilder customerInformation = new StringBuilder();
+        customerInformation.append(getCustomerName())
+                .append(getCustomerAddress());
+        return customerInformation.toString();
     }
 }

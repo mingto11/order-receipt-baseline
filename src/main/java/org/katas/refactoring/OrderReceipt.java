@@ -29,30 +29,20 @@ public class OrderReceipt {
 		output.append("Sales Tax").append('\t').append(order.getTotalSalesTax());
 
         // print total amount
-		output.append("Total Amount").append('\t').append(order.getTotalAmount());
+		output.append("Total Amount").append('\t').append(order.getTotalAmountIncludeTax());
 		return output.toString();
 	}
 
 	private String constructItemsInformation(Order order) {
 		StringBuilder itemsInformation = new StringBuilder();
 		for (LineItem lineItem : order.getLineItems()) {
-			itemsInformation.append(lineItem.getDescription());
-			itemsInformation.append('\t');
-			itemsInformation.append(lineItem.getPrice());
-			itemsInformation.append('\t');
-			itemsInformation.append(lineItem.getQuantity());
-			itemsInformation.append('\t');
-			itemsInformation.append(lineItem.getTotalAmount());
-			itemsInformation.append('\n');
+			itemsInformation.append(lineItem.toString()).append('\n');
 		}
 		return itemsInformation.toString();
 	}
 
 	private String constructCustomerInformation(Order order) {
-		StringBuilder customerInformation = new StringBuilder();
-		customerInformation.append(order.getCustomerName());
-		customerInformation.append(order.getCustomerAddress());
-		return customerInformation.toString();
+		return order.getCustomerInformation();
 	}
 
 }

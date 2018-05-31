@@ -17,4 +17,11 @@ public class Customer {
     public String getAddress() {
         return address;
     }
+
+    public String toString(){
+        StringBuilder customerInformation = new StringBuilder();
+        customerInformation.append(name);
+        customerInformation.append(address);
+        return customerInformation.toString();
+    }
 }
