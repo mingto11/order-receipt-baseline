@@ -3,42 +3,34 @@ package org.katas.refactoring;
 import java.util.List;
 
 public class Order {
-    Customer customer;
-    List<LineItem> items;
+
+    private Customer customer;
+    private List<LineItem> lineItems;
 
     public Order(Customer customer, List<LineItem> lineItems) {
         this.customer = customer;
-        this.items = lineItems;
-    }
-
-    public String getCustomerName() {
-        return customer.getName();
-    }
-
-    public String getCustomerAddress() {
-        return customer.getAddress();
-    }
-
-    public double getTotalAmountIncludeTax() {
-        return getTotalAmount() + getTotalSalesTax();
+        this.lineItems = lineItems;
     }
 
     public double getTotalAmount(){
-        return items.stream().mapToDouble(LineItem::getTotalAmount).sum();
+        return lineItems.stream()
+                .mapToDouble(LineItem::getTotalAmount)
+                .sum();
     }
 
     public double getTotalSalesTax() {
         return getTotalAmount() * .10;
     }
 
+    public double getTotalAmountIncludeTax() {
+        return getTotalAmount() + getTotalSalesTax();
+    }
+
     public List<LineItem> getLineItems() {
-        return items;
+        return lineItems;
     }
 
     public String getCustomerInformation(){
-        StringBuilder customerInformation = new StringBuilder();
-        customerInformation.append(getCustomerName())
-                .append(getCustomerAddress());
-        return customerInformation.toString();
+        return customer.toString();
     }
 }

@@ -10,18 +10,11 @@ public class Customer {
         this.address = address;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public String toString(){
         StringBuilder customerInformation = new StringBuilder();
-        customerInformation.append(name);
-        customerInformation.append(address);
-        return customerInformation.toString();
+        return customerInformation
+                .append(name)
+                .append(address)
+                .toString();
     }
 }

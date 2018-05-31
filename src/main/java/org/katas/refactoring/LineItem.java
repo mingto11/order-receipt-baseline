@@ -12,30 +12,19 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
     public double getTotalAmount() {
         return price * quantity;
     }
 
     public String toString() {
         StringBuilder results = new StringBuilder();
-        return results.append(getDescription())
+        return results.append(description)
                 .append('\t')
-                .append(getPrice())
+                .append(price)
                 .append('\t')
-                .append(getQuantity())
+                .append(quantity)
                 .append('\t')
-                .append(getTotalAmount()).toString();
+                .append(getTotalAmount())
+                .toString();
     }
 }

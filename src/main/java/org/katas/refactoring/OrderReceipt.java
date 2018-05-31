@@ -1,5 +1,8 @@
 package org.katas.refactoring;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * OrderReceipt prints the details of order including customer name, address, description, quantity,
  * price and amount. It also calculates the sales tax @ 10% and prints as part
@@ -15,30 +18,32 @@ public class OrderReceipt {
 	}
 
 	public String printReceipt() {
-		StringBuilder output = new StringBuilder();
+		StringBuilder output = new StringBuilder("======Printing Orders======\n");
 
-		output.append("======Printing Orders======\n");
-
-		// print date, bill no, customer name
+		// print customer information
 		output.append(constructCustomerInformation(order));
 
-		// prints lineItems
-		output.append(constructItemsInformation(order));
+		// prints lineItems information
+		output.append(constructItemsInformation(order.getLineItems()))
+                .append('\n');
 
 		// prints the state tax
-		output.append("Sales Tax").append('\t').append(order.getTotalSalesTax());
+		output.append("Sales Tax")
+                .append('\t')
+                .append(order.getTotalSalesTax());
 
         // print total amount
-		output.append("Total Amount").append('\t').append(order.getTotalAmountIncludeTax());
+		output.append("Total Amount")
+                .append('\t')
+                .append(order.getTotalAmountIncludeTax());
+
 		return output.toString();
 	}
 
-	private String constructItemsInformation(Order order) {
-		StringBuilder itemsInformation = new StringBuilder();
-		for (LineItem lineItem : order.getLineItems()) {
-			itemsInformation.append(lineItem.toString()).append('\n');
-		}
-		return itemsInformation.toString();
+	private String constructItemsInformation(List<LineItem> lineItems) {
+        return lineItems.stream()
+                .map(LineItem::toString)
+                .collect(Collectors.joining("\n"));
 	}
 
 	private String constructCustomerInformation(Order order) {
